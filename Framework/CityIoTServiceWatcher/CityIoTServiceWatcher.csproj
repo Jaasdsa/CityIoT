@@ -1,0 +1,317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{4F0C8D45-2F2E-4AE8-B2E3-9187996BEFA5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CityIoTServiceWatcher</RootNamespace>
+    <AssemblyName>物联网服务管理器</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>..\..\..\CityIotBuild\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>..\..\..\CityInterface\CityIotBuild\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\panda.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CityFormControls">
+      <HintPath>..\CityFormControls\bin\Debug\CityFormControls.dll</HintPath>
+    </Reference>
+    <Reference Include="MQTTnet, Version=2.8.2.0, Culture=neutral, PublicKeyToken=b69712f52770c0a7, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\supportDLLs\MQTTnet.2.8.2\lib\net452\MQTTnet.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChildServices\HisVacuateService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\HisVacuateService.Designer.cs">
+      <DependentUpon>HisVacuateService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\OPCPumpService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\OPCPumpService.Designer.cs">
+      <DependentUpon>OPCPumpService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\OPCScadaServices.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\OPCScadaServices.Designer.cs">
+      <DependentUpon>OPCScadaServices.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\PumpAlarmService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\PumpAlarmService.Designer.cs">
+      <DependentUpon>PumpAlarmService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\SpecialProjectService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\SpecialProjectService.Designer.cs">
+      <DependentUpon>SpecialProjectService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\WebPandaControlService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\WebPandaControlService.Designer.cs">
+      <DependentUpon>WebPandaControlService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaPumpScadaService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaPumpScadaService.Designer.cs">
+      <DependentUpon>WEBPandaPumpScadaService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaPumpService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaPumpService.Designer.cs">
+      <DependentUpon>WEBPandaPumpService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaYLService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaYLService.Designer.cs">
+      <DependentUpon>WEBPandaYLService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaZHCDService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ChildServices\WEBPandaZHCDService.Designer.cs">
+      <DependentUpon>WEBPandaZHCDService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogSubscriber.cs" />
+    <Compile Include="LogView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogView.Designer.cs">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainWindow.Designer.cs">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartPanel\AddSonService.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\AddSonService.Designer.cs">
+      <DependentUpon>AddSonService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigCenter.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigCenter.Designer.cs">
+      <DependentUpon>ConfigCenter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="About.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="About.Designer.cs">
+      <DependentUpon>About.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Config.cs" />
+    <Compile Include="EnvChecker.cs" />
+    <Compile Include="MQTTClient.cs" />
+    <Compile Include="PartPanel\CommandConf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\CommandConf.Designer.cs">
+      <DependentUpon>CommandConf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartPanel\LogConf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\LogConf.Designer.cs">
+      <DependentUpon>LogConf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartPanel\PublishConf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\PublishConf.Designer.cs">
+      <DependentUpon>PublishConf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartPanel\SolutionConf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\SolutionConf.Designer.cs">
+      <DependentUpon>SolutionConf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PartPanel\DBConf.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="PartPanel\DBConf.Designer.cs">
+      <DependentUpon>DBConf.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChildServices\HisVacuateService.resx">
+      <DependentUpon>HisVacuateService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\OPCPumpService.resx">
+      <DependentUpon>OPCPumpService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\OPCScadaServices.resx">
+      <DependentUpon>OPCScadaServices.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\PumpAlarmService.resx">
+      <DependentUpon>PumpAlarmService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\SpecialProjectService.resx">
+      <DependentUpon>SpecialProjectService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\WebPandaControlService.resx">
+      <DependentUpon>WebPandaControlService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\WEBPandaPumpScadaService.resx">
+      <DependentUpon>WEBPandaPumpScadaService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\WEBPandaPumpService.resx">
+      <DependentUpon>WEBPandaPumpService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\WEBPandaYLService.resx">
+      <DependentUpon>WEBPandaYLService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ChildServices\WEBPandaZHCDService.resx">
+      <DependentUpon>WEBPandaZHCDService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogView.resx">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainWindow.resx">
+      <DependentUpon>MainWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\AddSonService.resx">
+      <DependentUpon>AddSonService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigCenter.resx">
+      <DependentUpon>ConfigCenter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="About.resx">
+      <DependentUpon>About.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\CommandConf.resx">
+      <DependentUpon>CommandConf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\LogConf.resx">
+      <DependentUpon>LogConf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\PublishConf.resx">
+      <DependentUpon>PublishConf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\SolutionConf.resx">
+      <DependentUpon>SolutionConf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PartPanel\DBConf.resx">
+      <DependentUpon>DBConf.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="HelpDoc\产品帮助.chm">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WCFInterface\CityIoTServiceManager\CityIoTServiceManager.csproj">
+      <Project>{92E4E1E4-EADD-4996-B5B7-AC24B175D5B2}</Project>
+      <Name>CityIoTServiceManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityPublicClassLib\CityPublicClassLib.csproj">
+      <Project>{7A7F159E-4C38-4D59-BC3B-C2107261F5C4}</Project>
+      <Name>CityPublicClassLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityUtils\CityUtils.csproj">
+      <Project>{E4BB15E9-8E95-4993-B755-6DF6054B73F4}</Project>
+      <Name>CityUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Chart.png" />
+    <Content Include="Resources\Chat.png" />
+    <Content Include="Resources\ClearScript.png" />
+    <Content Include="Resources\Config.png" />
+    <Content Include="Resources\favicon.ico" />
+    <Content Include="Resources\Log.png" />
+    <Content Include="Resources\Monitor.png" />
+    <Content Include="Resources\panda.ico" />
+    <Content Include="Resources\Refresh.png" />
+    <Content Include="Resources\Server.ico" />
+    <Content Include="Resources\Start.png" />
+    <Content Include="Resources\Status.png" />
+    <Content Include="Resources\Status_Gray.png" />
+    <Content Include="Resources\Status_Green.png" />
+    <Content Include="Resources\Status_Red.png" />
+    <Content Include="Resources\Status_Yellow.png" />
+    <Content Include="Resources\Stop.png" />
+    <Content Include="Resources\user.ico" />
+    <Content Include="Resources\watcher.ico" />
+    <None Include="Resources\切换.ico" />
+    <None Include="Resources\熊猫.png" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
+</Project>

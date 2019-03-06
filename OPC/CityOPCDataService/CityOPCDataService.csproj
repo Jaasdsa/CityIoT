@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A95578C9-1AA0-4015-BC52-95866794C619}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CityOPCDataService</RootNamespace>
+    <AssemblyName>CityOPCDataService</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Interop.OPCAutomation, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>DLL\Interop.OPCAutomation.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Config.cs" />
+    <Compile Include="1. Pump\PumpCollecter.cs" />
+    <Compile Include="1. Pump\PumpCommandConsumer.cs" />
+    <Compile Include="EnvChecker.cs" />
+    <Compile Include="OPC\OpcClient.cs" />
+    <Compile Include="OPC\OpcDaClient.cs" />
+    <Compile Include="OPC\ControlPoint.cs" />
+    <Compile Include="OPC\OpcTag.cs" />
+    <Compile Include="1. Pump\PumpJZ.cs" />
+    <Compile Include="1. Pump\OPCPumpService.cs" />
+    <Compile Include="2. Scada\OPCScadaService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="2. Scada\StationCollecter.cs" />
+    <Compile Include="2. Scada\Station.cs" />
+    <Compile Include="1. Pump\PumpCommand.cs" />
+    <Compile Include="2. Scada\StationCommand.cs" />
+    <Compile Include="2. Scada\StationCommandConsumer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Lib\64为系统OPCDAAuto需注册.bat">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Lib\Interop.OPCAutomation.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Lib\OPCDAAuto.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Framework\CityIoTCommand\CityIoTCommand.csproj">
+      <Project>{D31D2673-102D-44FA-B2B2-45DEB9F139E2}</Project>
+      <Name>CityIoTCommand</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\CityLogService\CityLogService.csproj">
+      <Project>{B8FF9B39-DAED-49C7-98B2-11429007098B}</Project>
+      <Name>CityLogService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\CityPublicClassLib\CityPublicClassLib.csproj">
+      <Project>{7A7F159E-4C38-4D59-BC3B-C2107261F5C4}</Project>
+      <Name>CityPublicClassLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\CityUtils\CityUtils.csproj">
+      <Project>{E4BB15E9-8E95-4993-B755-6DF6054B73F4}</Project>
+      <Name>CityUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(ProjectDir)..\..\..\CityIoTBuild"  md  "$(ProjectDir)..\..\..\CityIoTBuild" 
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>Xcopy  $(ProjectDir)bin\Debug  $(ProjectDir)..\..\..\CityIoTBuild  /c /s /e /y
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

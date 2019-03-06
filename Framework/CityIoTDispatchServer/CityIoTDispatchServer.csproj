@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{71152FCD-3FB5-4E58-A0B3-F1ECD4D71B44}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>CityIoTDispatchServer</RootNamespace>
+    <AssemblyName>熊猫智慧水务物联网数据服务调度中心</AssemblyName>
+    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>..\..\assets\images\熊猫.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration.Install" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.ServiceProcess" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ProjectInstaller.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProjectInstaller.Designer.cs">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </Compile>
+    <Compile Include="IoTDispatchService.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="IoTDispatchService.Designer.cs">
+      <DependentUpon>IoTDispatchService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="IoTDispatchService.resx">
+      <DependentUpon>IoTDispatchService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProjectInstaller.resx">
+      <DependentUpon>ProjectInstaller.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\WCFInterface\CityIoTServiceManager\CityIoTServiceManager.csproj">
+      <Project>{92E4E1E4-EADD-4996-B5B7-AC24B175D5B2}</Project>
+      <Name>CityIoTServiceManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityLogService\CityLogService.csproj">
+      <Project>{B8FF9B39-DAED-49C7-98B2-11429007098B}</Project>
+      <Name>CityLogService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityPublicClassLib\CityPublicClassLib.csproj">
+      <Project>{7A7F159E-4C38-4D59-BC3B-C2107261F5C4}</Project>
+      <Name>CityPublicClassLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CityUtils\CityUtils.csproj">
+      <Project>{E4BB15E9-8E95-4993-B755-6DF6054B73F4}</Project>
+      <Name>CityUtils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>if not exist "$(ProjectDir)..\..\..\CityIoTBuild"  md  "$(ProjectDir)..\..\..\CityIoTBuild" 
+</PreBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PostBuildEvent>Xcopy  $(ProjectDir)bin\Debug  $(ProjectDir)..\..\..\CityIoTBuild  /c /s /e /y
+</PostBuildEvent>
+  </PropertyGroup>
+</Project>

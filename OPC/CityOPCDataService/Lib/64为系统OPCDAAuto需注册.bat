@@ -1,0 +1,1 @@
+regsvr32 "D:\VSProject\IOServer\c#Ğ´µÄOPC ClientÔ´Âë\OPCDAAuto.dll"

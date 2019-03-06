@@ -1,0 +1,175 @@
+<HTML>
+<HEAD>
+  <meta http-equiv=Content-Type content="text/html; charset=gb2312">
+  <meta name="GENERATOR" content="Macrobject Word-2-CHM Pro">
+</HEAD>
+<BODY>
+<OBJECT type="text/site properties">
+	<param name="Window Styles" value="0x800235">
+</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="第十章 命令语言程序">
+		<param name="Local" value="index.htm">
+		</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="命令语言类型">
+		<param name="Local" value="_2.htm">
+		</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="应用程序命令语言">
+		<param name="Local" value="_3.htm">
+		</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="认识命令语言编辑器">
+		<param name="Local" value="_4.htm">
+		</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="剪切编辑器中选择的内容">
+		<param name="Local" value="_5.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="复制编辑器中选中的内容">
+		<param name="Local" value="_6.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="粘贴复制或剪切的内容到编辑器中">
+		<param name="Local" value="_7.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="删除编辑器中选定的内容">
+		<param name="Local" value="_8.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="全选编辑器中选定的内容">
+		<param name="Local" value="_9.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="在编辑器中查找字符">
+		<param name="Local" value="_10.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="在编辑器中替换字符">
+		<param name="Local" value="_11.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="改变编辑器中字符字体型号、大小">
+		<param name="Local" value="_12.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="如何选择函数名称、画面名称等到编辑器中">
+		<param name="Local" value="_13.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="应用程序命令语言的定义">
+		<param name="Local" value="_14.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="数据改变命令语言">
+		<param name="Local" value="_15.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="事件命令语言">
+		<param name="Local" value="_16.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="热键命令语言">
+		<param name="Local" value="_17.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="用户自定义函数">
+		<param name="Local" value="_18.htm">
+		</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="自定义函数里的概念">
+		<param name="Local" value="_19.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="自定义函数的定义和使用">
+		<param name="Local" value="_20.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="画面命令语言">
+		<param name="Local" value="_21.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="动画连接命令语言">
+		<param name="Local" value="_22.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="命令语言语法">
+		<param name="Local" value="_23.htm">
+		</OBJECT>
+<UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="运算符">
+		<param name="Local" value="_24.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="赋值语句">
+		<param name="Local" value="_25.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="If-Else 语句">
+		<param name="Local" value="_26.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="While（）语句">
+		<param name="Local" value="_27.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="命令语言程序的注释方法">
+		<param name="Local" value="_28.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+</UL>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="命令语言执行中如何跟踪变量的值">
+		<param name="Local" value="_29.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="在命令语言中使用自定义变量">
+		<param name="Local" value="_30.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+	<LI><OBJECT type="text/sitemap">
+		<param name="Name" value="命令语言函数及使用方法">
+		<param name="Local" value="_31.htm">
+  	<param name="ImageNumber" value="11">
+		</OBJECT>
+</UL>
+</UL>
+
+</BODY>
+</HTML>
