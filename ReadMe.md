@@ -25,3 +25,6 @@
 
 ## 参考
 - .NET Framework4.5.2  下载路径:[https://www.microsoft.com/en-us/download/details.aspx?id=42642](https://www.microsoft.com/en-us/download/details.aspx?id=42642)
+
+- 请下载工具查看帮助文档
+![](assets/images/help.png)
