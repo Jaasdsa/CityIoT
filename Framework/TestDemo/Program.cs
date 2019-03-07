@@ -7,6 +7,7 @@ using CityOPCDataService;
 using CityPublicClassLib;
 using CityUtils;
 using CityWEBDataService;
+using JiangXiXingGuo;
 using System;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
@@ -21,6 +22,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Web;
 using System.Xml;
+using System.Xml.Linq;
+using System.Xml.Serialization;
 
 namespace TestDemo 
 {
@@ -35,9 +38,9 @@ namespace TestDemo
             int s2 = dt.Minute;
             int s3 = dt.Second;
 
-            // Test_core();
-
-            Console.ReadLine();
+            //TestSOAP();
+            Test_core();
+            //Console.ReadLine();
         }
 
         // 测试OPC
@@ -190,6 +193,163 @@ namespace TestDemo
                 Console.WriteLine(cm.ID+"移除成功");
             }
         }
+
+        private static void TestSOAP()
+        {
+            //构造SOAP请求信息
+            StringBuilder stringBuilder = new StringBuilder();
+            stringBuilder.Append("<?xml version=\"1.0\" encoding=\"utf - 8\"?><soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\"><soap12:Body><getXGInfo xmlns=\"http://tempuri.org/\" /></soap12:Body></soap12:Envelope>");
+            //stringBuilder.Append("<soap12:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap12=\"http://www.w3.org/2003/05/soap-envelope\">");
+            //stringBuilder.Append("<soap12:Body>");
+            //stringBuilder.Append("<getXGInfo xmlns=\"http://tempuri.org/\" />");
+            //stringBuilder.Append("</soap12:Body>");
+            //stringBuilder.Append("</soap12:Envelope>");
+
+            //发送请求
+            Uri uri = new Uri("http://120.77.66.89:90/WebService1.asmx");
+            WebRequest webRequest = WebRequest.Create(uri);
+            webRequest.ContentType = "text/xml; charset=utf-8";
+            webRequest.Method = "POST";
+            
+            using (Stream requestStream = webRequest.GetRequestStream())
+            {
+                byte[] paramBytes = Encoding.UTF8.GetBytes(stringBuilder.ToString());
+                requestStream.Write(paramBytes, 0, paramBytes.Length);
+            }
+
+            //响应
+            WebResponse webResponse = webRequest.GetResponse();
+            using (StreamReader myStreamReader = new StreamReader(webResponse.GetResponseStream(), Encoding.UTF8))
+            {
+                string streamString = myStreamReader.ReadToEnd().Trim().Replace("\n", "");
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(streamString);
+                string s = doc.DocumentElement["soap:Body"]["getXGInfoResponse"]["getXGInfoResult"]["diffgr:diffgram"].InnerXml;
+                doc.LoadXml(s);
+                XmlNode node = doc.SelectSingleNode("NewDataSet");
+                List<SoapData> list = new List<SoapData>();
+                foreach(XmlNode childNode in node.ChildNodes)
+                {
+                    SoapData data = new SoapData();
+                    foreach (XmlNode sonNode in childNode.ChildNodes)
+                    {
+                       
+                        switch (sonNode.Name)
+                        {
+                            case "名称":
+                                data.名称 = sonNode.InnerText;
+                                break;
+                            case "id":
+                                data.id = Convert.ToInt32(sonNode.InnerText);
+                                break;
+                            case "设备ID":
+                                data.设备ID = Convert.ToInt32(sonNode.InnerText);
+                                break;
+                            case "记录时间":
+                                data.记录时间 = Convert.ToDateTime(sonNode.InnerText);
+                                break;
+                            case "采集时间":
+                                data.采集时间 = Convert.ToDateTime(sonNode.InnerText);
+                                break;
+                            case "设备状态":
+                                data.设备状态 = sonNode.InnerText;
+                                break;
+                            case "通讯状态":
+                                data.通讯状态 = sonNode.InnerText;
+                                break;
+                            case "数据来源":
+                                data.数据来源 = sonNode.InnerText;
+                                break;
+                            case "压力":
+                                data.压力 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "电池电压":
+                                data.电池电压 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "信号强度":
+                                data.信号强度 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "瞬时流量":
+                                data.瞬时流量 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "正累计流量":
+                                data.正累计流量 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "负累计流量":
+                                data.负累计流量 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "净累计流量":
+                                data.净累计流量 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "压力2":
+                                data.压力2 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "电池电压报警":
+                                data.电池电压报警 = sonNode.InnerText;
+                                break;
+                            case "压力下限报警":
+                                data.压力下限报警 = sonNode.InnerText;
+                                break;
+                            case "压力上限报警":
+                                data.压力上限报警 = sonNode.InnerText;
+                                break;
+                            case "泵1运行":
+                                data.泵1运行 = sonNode.InnerText;
+                                break;
+                            case "泵1故障":
+                                data.泵1故障 = sonNode.InnerText;
+                                break;
+                            case "泵2运行":
+                                data.泵2运行 = sonNode.InnerText;
+                                break;
+                            case "泵2故障":
+                                data.泵2故障 = sonNode.InnerText;
+                                break;
+                            case "浊度":
+                                data.浊度 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "余氯":
+                                data.余氯 = Convert.ToDecimal(sonNode.InnerText);
+                                break;
+                            case "门开关":
+                                data.门开关 = sonNode.InnerText;
+                                break;
+                            case "浊度故障":
+                                data.浊度故障 = sonNode.InnerText;
+                                break;
+                            case "浊度上限报警":
+                                data.浊度上限报警 = sonNode.InnerText;
+                                break;
+                            case "浊度下限报警":
+                                data.浊度下限报警 = sonNode.InnerText;
+                                break;
+                            case "余氯故障":
+                                data.余氯故障 = sonNode.InnerText;
+                                break;
+                            case "余氯上限报警":
+                                data.余氯上限报警 = sonNode.InnerText;
+                                break;
+                            case "余氯下限报警":
+                                data.余氯下限报警 = sonNode.InnerText;
+                                break;
+                            case "水表通讯故障":
+                                data.水表通讯故障 = sonNode.InnerText;
+                                break;
+                            case "浊度状态":
+                                data.浊度状态 = sonNode.InnerText;
+                                break;
+                            case "余氯状态":
+                                data.余氯状态 = sonNode.InnerText;
+                                break;
+                        }
+                        
+                    }
+                    list.Add(data);
+                }
+                
+            }
+        }
+
     }
 
     public interface I1

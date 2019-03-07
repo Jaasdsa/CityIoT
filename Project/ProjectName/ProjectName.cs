@@ -15,9 +15,14 @@ namespace JiangXiNanChang
         // 任务接口入口
         public override bool IsRuning { get; set; }
 
+        Task task;
         public override void Start(out string errMsg)
         {
             errMsg = "";
+
+            task = new Task(()=> {
+
+            });
 
 
             IsRuning = true;
@@ -33,6 +38,11 @@ namespace JiangXiNanChang
         public override void ReceiveCommand(RequestCommand command)
         {
 
+        }
+
+        public void Excute()
+        {
+            // 7*24小时业务逻辑
         }
 
     }

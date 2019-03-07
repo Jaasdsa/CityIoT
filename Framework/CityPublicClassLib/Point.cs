@@ -423,6 +423,19 @@ namespace CityPublicClassLib
                     break;
             }
         }
+
+        public void ReadWEBSoap(object pointDataSource)
+        {
+            this.State = ValueState.Success;
+            this.LastTime = DataUtil.ToDateString(DateTime.Now);
+            if (pointDataSource == null)
+            {
+                this.Value = null;
+                return; // 数据源为null，直接返回
+            }
+            this.Value = pointDataSource.ToString();
+        }
+
     }
 
 }

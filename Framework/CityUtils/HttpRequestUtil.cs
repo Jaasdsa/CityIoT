@@ -15,6 +15,7 @@ namespace CityUtils
     {
         Json,
         XWwwFromUrlencoded,
+        textXml
     }
 
     public class HttpRequestUtil
@@ -40,6 +41,9 @@ namespace CityUtils
                 case ContentType.XWwwFromUrlencoded:
                     this.contentType = "application/x-www-form-urlencoded;charset=UTF-8";
                     break;
+                case ContentType.textXml:
+                    this.contentType = "text/xml; charset=utf-8";
+                    break;
             }
         }
         public HttpRequestUtil(int defaultTimeout, ContentType contentType)
@@ -52,6 +56,9 @@ namespace CityUtils
                     break;
                 case ContentType.XWwwFromUrlencoded:
                     this.contentType = "application/x-www-form-urlencoded;charset=UTF-8";
+                    break;
+                case ContentType.textXml:
+                    this.contentType = "text/xml; charset=utf-8";
                     break;
             }
         }
@@ -100,6 +107,11 @@ namespace CityUtils
             HttpWebRequest request = CreatePostHttpWebRequest(url, parameters);
             ExcuteHttpRequest(request, AsyncCallBack, RequestErrorCallBack, ExcuteErrorCallBack);
         }
+        public void CreateSyncPostHttpRequest(string url, StringBuilder stringBuilder, Action<string> AsyncCallBack, Action<string> RequestErrorCallBack, Action<string> ExcuteErrorCallBack)
+        {
+            HttpWebRequest request = CreatePostHttpWebRequest(url, stringBuilder);
+            ExcuteHttpRequest(request, AsyncCallBack, RequestErrorCallBack, ExcuteErrorCallBack);
+        }
         /// <summary>
         /// 发送异步步http post请求
         /// </summary>
@@ -120,6 +132,11 @@ namespace CityUtils
         {
             Action<string, IDictionary<string, string>, Action<string>, Action<string>, Action<string>> action = CreateSyncPostHttpRequest;
             action.BeginInvoke(url, parameters, AsyncCallBack, RequestErrorCallBack, ExcuteErrorCallBack, null, null);
+        }
+        public void CreateAsyncPostHttpRequest(string url, StringBuilder stringBuilder, Action<string> AsyncCallBack, Action<string> RequestErrorCallBack, Action<string> ExcuteErrorCallBack)
+        {
+            Action<string, StringBuilder, Action<string>, Action<string>, Action<string>> action = CreateSyncPostHttpRequest;
+            action.BeginInvoke(url, stringBuilder, AsyncCallBack, RequestErrorCallBack, ExcuteErrorCallBack, null, null);
         }
         /// <summary>
         /// 创建请求对象
@@ -185,6 +202,22 @@ namespace CityUtils
                 }
             }
             return request;
+        }
+        private HttpWebRequest CreatePostHttpWebRequest(string url, StringBuilder stringBuilder)
+        {
+            var postRequest = HttpWebRequest.Create(url) as HttpWebRequest;
+            postRequest.KeepAlive = false;
+            postRequest.Timeout = defaultTimeout;
+            postRequest.Method = "POST";
+            postRequest.ContentType = contentType;
+            if (stringBuilder == null)
+                return postRequest;
+            using (Stream requestStream = postRequest.GetRequestStream())
+            {
+                byte[] paramBytes = Encoding.UTF8.GetBytes(stringBuilder.ToString());
+                requestStream.Write(paramBytes, 0, paramBytes.Length);
+            }
+            return postRequest;
         }
         /// <summary>
         /// 执行请求

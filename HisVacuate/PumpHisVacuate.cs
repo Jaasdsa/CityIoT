@@ -11,7 +11,7 @@ namespace CityHisVacuate
 {
     class PumpHisVacuate
     {
-        // Pump历史数据抽吸接口
+        // Pump历史数据抽稀接口
         public bool IsRuning { get; set; }
         DateTime endTime;
         Task task;

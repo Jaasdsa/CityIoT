@@ -12,7 +12,7 @@ namespace CityIoTServiceWatcher
     public static class Config
     {
         //版本信息
-        public static readonly string ServerVersion = "V2.3.3";
+        public static readonly string ServerVersion = "V2.4.0";
         public static readonly string ServerVersionLastTime = "2019-03-04 18:00:00";
         public static readonly string Version = ServerVersion;
         public static readonly string VersionLastTime = ServerVersionLastTime;

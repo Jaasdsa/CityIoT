@@ -78,6 +78,7 @@
       <Name>CityUtils</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PreBuildEvent>if not exist "$(ProjectDir)..\..\..\CityIoTBuild"  md  "$(ProjectDir)..\..\..\CityIoTBuild" 

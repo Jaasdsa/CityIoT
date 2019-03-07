@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C2A16E98-195E-4FFE-BACA-6D985628F89A}</ProjectGuid>
+    <ProjectGuid>{81E0670A-E970-499A-BA30-0A4696781FF5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>JiangXiXingGuo</RootNamespace>
@@ -30,18 +30,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="CityIoTPumpAlarm">
-      <HintPath>..\..\CityIoTPumpAlarm\bin\Debug\CityIoTPumpAlarm.dll</HintPath>
-    </Reference>
-    <Reference Include="CityLogService">
-      <HintPath>..\..\CityLogService\bin\Debug\CityLogService.dll</HintPath>
-    </Reference>
-    <Reference Include="CityUtils">
-      <HintPath>..\..\CityUtils\bin\Debug\CityUtils.dll</HintPath>
-    </Reference>
-    <Reference Include="CityWEBDataService">
-      <HintPath>..\..\CityWEBDataService\bin\Debug\CityWEBDataService.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -52,30 +40,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Config.cs" />
-    <Compile Include="EnvChecker.cs" />
+    <Compile Include="Soap.cs" />
+    <Compile Include="WEBSoapCommand.cs" />
+    <Compile Include="XingGuoService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="JiangXiXingGuo.cs" />
-    <Compile Include="SonServiceManager.cs" />
-    <Compile Include="WEB\WEBDataService.cs" />
-    <Compile Include="WEB\WEBPandaPumpManager.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\CityIoTCore\CityIoTCore.csproj">
-      <Project>{10A308B1-CCC6-4E83-9E60-0D4B67207DEF}</Project>
-      <Name>CityIoTCore</Name>
+    <ProjectReference Include="..\..\Framework\CityIoTCommand\CityIoTCommand.csproj">
+      <Project>{D31D2673-102D-44FA-B2B2-45DEB9F139E2}</Project>
+      <Name>CityIoTCommand</Name>
     </ProjectReference>
-    <ProjectReference Include="..\..\CityPublicClassLib\CityPublicClassLib.csproj">
+    <ProjectReference Include="..\..\Framework\CityLogService\CityLogService.csproj">
+      <Project>{B8FF9B39-DAED-49C7-98B2-11429007098B}</Project>
+      <Name>CityLogService</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\CityPublicClassLib\CityPublicClassLib.csproj">
       <Project>{7A7F159E-4C38-4D59-BC3B-C2107261F5C4}</Project>
       <Name>CityPublicClassLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Framework\CityUtils\CityUtils.csproj">
+      <Project>{E4BB15E9-8E95-4993-B755-6DF6054B73F4}</Project>
+      <Name>CityUtils</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PreBuildEvent>if not exist "$(ProjectDir)..\..\..\..\CityInterface\CityIoTBuild"  md "$(ProjectDir)..\..\..\..\CityInterface\CityIoTBuild"</PreBuildEvent>
+    <PreBuildEvent>if not exist "$(ProjectDir)..\..\..\CityIoTBuild"  md  "$(ProjectDir)..\..\..\CityIoTBuild" 
+</PreBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PostBuildEvent>Xcopy  $(ProjectDir)bin\Debug  $(ProjectDir)..\..\..\..\CityInterface\CityIoTBuild  /c /s /e /y
+    <PostBuildEvent>Xcopy  $(ProjectDir)bin\Debug  $(ProjectDir)..\..\..\CityIoTBuild  /c /s /e /y
 </PostBuildEvent>
   </PropertyGroup>
 </Project>

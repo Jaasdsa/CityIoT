@@ -11,7 +11,7 @@ namespace CityHisVacuate
 {
     class ScadaHisVacuate
     {
-        // Scada历史数据抽吸接口
+        // Scada历史数据抽稀接口
         public bool IsRuning { get; set; }
         DateTime endTime;
         Task task;

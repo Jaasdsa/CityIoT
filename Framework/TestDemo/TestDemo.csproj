@@ -59,6 +59,10 @@
       <Project>{A95578C9-1AA0-4015-BC52-95866794C619}</Project>
       <Name>CityOPCDataService</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Project\JiangXiXingGuo\JiangXiXingGuo.csproj">
+      <Project>{81E0670A-E970-499A-BA30-0A4696781FF5}</Project>
+      <Name>JiangXiXingGuo</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\WCFInterface\CityIoTServiceManager\CityIoTServiceManager.csproj">
       <Project>{92E4E1E4-EADD-4996-B5B7-AC24B175D5B2}</Project>
       <Name>CityIoTServiceManager</Name>
