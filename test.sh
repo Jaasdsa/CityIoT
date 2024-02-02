@@ -8,7 +8,7 @@ if [ "$ARCH" = "x86_64" ]; then
     apt-get update
     apt-get install -y google-chrome-stable
 elif [ "$ARCH" = "arm64" ]; then
-
+  echo "支持的CPU架构: $ARCH"
 else
   echo "不支持的CPU架构: $ARCH"
 fi
